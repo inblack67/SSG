@@ -1,13 +1,15 @@
 import { animes } from '../../src/data';
 import { useRouter } from 'next/router';
 
-const SingleAnime = ({ anime: { title, description } }) => {
+const SingleAnime = ({ anime }) => {
 
     const { isFallback } = useRouter();
 
     if (isFallback) {
-        <h1>Loading...</h1>
+        return <h1>Loading...</h1>
     }
+
+    const { title, description } = anime;
 
     return (
         <div>
@@ -25,7 +27,14 @@ export const getStaticPaths = async () => {
     const paths = animes.map(anime => {
         return { params: { id: anime.id } };
     });
-    return { paths, fallback: false };
+
+    paths.splice(2, 1);
+
+    return { paths, fallback: true };
+
+    // will not send res to client until data is ready
+    // no fallback, loading, just simple blocking
+    // return { paths, fallback: 'unstable_blocking' };
 }
 
 export const getStaticProps = async ({ params: { id } }) => {

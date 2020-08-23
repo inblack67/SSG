@@ -1,7 +1,7 @@
 export const animes = [
     {
         id: '1',
-        title: 'Shippuden',
+        title: 'Pain',
         description: 'Dark'
     },
     {
