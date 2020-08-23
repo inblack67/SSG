@@ -21,8 +21,6 @@ const SingleAnime = ({ anime: { title, description } }) => {
     )
 }
 
-export default SingleAnime;
-
 export const getStaticPaths = async () => {
     const paths = animes.map(anime => {
         return { params: { id: anime.id } };
@@ -34,3 +32,5 @@ export const getStaticProps = async ({ params: { id } }) => {
     const anime = animes.find(an => an.id === id);
     return { props: { anime } };
 }
+
+export default SingleAnime;

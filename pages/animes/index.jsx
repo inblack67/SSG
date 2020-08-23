@@ -1,6 +1,6 @@
-import React from 'react'
 
-export const index = () => {
+
+const index = () => {
     return (
         <div>
             <h1>getStaticPaths</h1>
@@ -8,3 +8,5 @@ export const index = () => {
         </div>
     )
 }
+
+export default index
